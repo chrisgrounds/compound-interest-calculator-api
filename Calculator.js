@@ -21,7 +21,7 @@ class Calculator {
   }
 
   calculate() { 
-    return this.interestOnPrincipal() + this.interestOnFutureValueOfASeries();
+    return Number((this.interestOnPrincipal() + this.interestOnFutureValueOfASeries()).toFixed(2));
   }
 }
 
