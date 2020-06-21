@@ -8,8 +8,6 @@ class Calculator {
   }
   
   interestOnPrincipal() {
-    const interestRate = 1 + this.interestRate;
-
     return this.principal * Math.pow(1 + this.interestRate / this.compoundsPerYear, this.compoundsPerYear * this.termLength);
   }
   

@@ -4,11 +4,11 @@ const Calculator = require("./Calculator");
 
 module.exports.api = async event => {
   const principal = parseInt(event.queryStringParameters.principal);
-  const monthly = parseInt(event.queryStringParameters.monthlyAmount);
-  const rate = parseFloat(event.queryStringParameters.interestRate);
+  const monthlyAmount = parseInt(event.queryStringParameters.monthlyAmount);
+  const interestRate = parseFloat(event.queryStringParameters.interestRate);
   const termLength = parseInt(event.queryStringParameters.termLength);
   
-  const calculator = new Calculator(principal, monthly, rate, termLength);
+  const calculator = new Calculator(principal, monthlyAmount, interestRate, termLength);
 
   return {
     statusCode: 200,
@@ -17,8 +17,8 @@ module.exports.api = async event => {
         value: calculator.calculate(),
         input: {
           principal,
-          monthly,
-          rate,
+          monthlyAmount,
+          interestRate,
           termLength,
         },
       },
