@@ -21,7 +21,7 @@ describe("calculateCompoundInterest", () => {
     expect(calculator.calculate()).toBe(23827.98);
   });
 
-  it("test2", () => {
+  it("test3", () => {
     const principal = 10000;
     const monthly = 400;
     const rate = 0.08;
