@@ -18,7 +18,7 @@ describe("calculateCompoundInterest", () => {
     const termLength = 10;
     const calculator = new Calculator(principal, monthly, rate, termLength);
 
-    expect(calculator.calculate()).toBe(23763.28);
+    expect(calculator.calculate()).toBe(23827.98);
   });
 
   it("test2", () => {
