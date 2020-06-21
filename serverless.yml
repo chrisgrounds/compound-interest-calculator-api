@@ -1,0 +1,22 @@
+service: compound-interest-calculator-api
+app: compound-interest-calculator-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-2
+
+functions:
+  hello:
+    handler: handler.api
+    events:
+     - http:
+        path: calculate/api
+        method: get
+        request:
+          parameters:
+            queryStrings:
+              principal: true
+              monthlyAmount: true
+              interestRate: true
+              termLength: true
