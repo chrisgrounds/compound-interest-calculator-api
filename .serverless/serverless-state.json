@@ -160,7 +160,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/compound-interest-calculator-api/dev/1592741645428-2020-06-21T12:14:05.428Z/compound-interest-calculator-api.zip"
+                "S3Key": "serverless/compound-interest-calculator-api/dev/1592813558306-2020-06-22T08:12:38.306Z/compound-interest-calculator-api.zip"
               },
               "FunctionName": "compound-interest-calculator-api-dev-hello",
               "Handler": "handler.api",
@@ -178,14 +178,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersion3p0pIcp0sqgM7DGaKFIntO3lwGAGWOZjoLr3jHXJmk": {
+          "HelloLambdaVersionVScfJvKrwz0pozxfvxk3D2IEUIV7SSBhjWIWqAhRM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "OEE6kphnxFd7VeZnNSjeDzlV2ZpAtHlJk1T2MzW88g4="
+              "CodeSha256": "i4hlsrCzTEWCnN67hvVBYOnL/IWC5pygLqc/t8RuTJ0="
             }
           },
           "ApiGatewayRestApi": {
@@ -222,6 +222,51 @@
                 "Ref": "ApiGatewayResourceCalculate"
               },
               "PathPart": "api",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodCalculateApiOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceCalculateApi"
+              },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -270,7 +315,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1592741641132": {
+          "ApiGatewayDeployment1592813551000": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -279,6 +324,7 @@
               "StageName": "dev"
             },
             "DependsOn": [
+              "ApiGatewayMethodCalculateApiOptions",
               "ApiGatewayMethodCalculateApiGet"
             ]
           },
@@ -329,7 +375,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersion3p0pIcp0sqgM7DGaKFIntO3lwGAGWOZjoLr3jHXJmk"
+              "Ref": "HelloLambdaVersionVScfJvKrwz0pozxfvxk3D2IEUIV7SSBhjWIWqAhRM"
             }
           },
           "ServiceEndpoint": {
@@ -435,6 +481,25 @@
             "http": {
               "path": "calculate/api",
               "method": "get",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
               "request": {
                 "parameters": {}
               },
@@ -448,7 +513,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersion3p0pIcp0sqgM7DGaKFIntO3lwGAGWOZjoLr3jHXJmk"
+        "versionLogicalId": "HelloLambdaVersionVScfJvKrwz0pozxfvxk3D2IEUIV7SSBhjWIWqAhRM"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -458,7 +523,7 @@
     "artifact": "/Users/baconc01/compound-interest-calculator-api/.serverless/compound-interest-calculator-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/compound-interest-calculator-api/dev/1592741645428-2020-06-21T12:14:05.428Z",
+    "artifactDirectoryName": "serverless/compound-interest-calculator-api/dev/1592813558306-2020-06-22T08:12:38.306Z",
     "artifact": "compound-interest-calculator-api.zip"
   }
 }

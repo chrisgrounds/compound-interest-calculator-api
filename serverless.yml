@@ -13,6 +13,7 @@ functions:
      - http:
         path: calculate/api
         method: get
+        cors: true
         request:
           parameters:
             queryStrings:
