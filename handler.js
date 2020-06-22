@@ -10,6 +10,12 @@ module.exports.api = async event => {
   
   const calculator = new Calculator(principal, monthlyAmount, interestRate, termLength);
 
+  const history =
+    [...Array(termLength - 1).keys()]
+      .map(i => ({ year: i, value: calculator.calculate(i) }));
+
+  const value = calculator.calculate(termLength);
+
   return {
     statusCode: 200,
     headers: {
@@ -18,7 +24,8 @@ module.exports.api = async event => {
     },
     body: JSON.stringify(
       {
-        value: calculator.calculate(),
+        value,
+        history,
         input: {
           principal,
           monthlyAmount,

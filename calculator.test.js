@@ -6,9 +6,9 @@ describe("calculateCompoundInterest", () => {
     const monthly = 400;
     const rate = 0.01;
     const termLength = 1;
-    const calculator = new Calculator(principal, monthly, rate, termLength);
+    const calculator = new Calculator(principal, monthly, rate);
 
-    expect(calculator.calculate()).toBe(4826.08);
+    expect(calculator.calculate(termLength)).toBe(4826.08);
   });
 
   it("test2", () => {
@@ -16,9 +16,9 @@ describe("calculateCompoundInterest", () => {
     const monthly = 100;
     const rate = 0.05;
     const termLength = 10;
-    const calculator = new Calculator(principal, monthly, rate, termLength);
+    const calculator = new Calculator(principal, monthly, rate);
 
-    expect(calculator.calculate()).toBe(23827.98);
+    expect(calculator.calculate(termLength)).toBe(23827.98);
   });
 
   it("test3", () => {
@@ -26,8 +26,8 @@ describe("calculateCompoundInterest", () => {
     const monthly = 400;
     const rate = 0.08;
     const termLength = 20;
-    const calculator = new Calculator(principal, monthly, rate, termLength);
+    const calculator = new Calculator(principal, monthly, rate);
 
-    expect(calculator.calculate()).toBe(286446.92);
+    expect(calculator.calculate(termLength)).toBe(286446.92);
   });
 });

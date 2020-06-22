@@ -3,23 +3,22 @@ class Calculator {
     this.principal = principal;
     this.monthlyAmount = monthlyAmount;
     this.interestRate = interestRate;
-    this.termLength = termLength;
     this.compoundsPerYear = 12
   }
   
-  interestOnPrincipal() {
-    return this.principal * Math.pow(1 + this.interestRate / this.compoundsPerYear, this.compoundsPerYear * this.termLength);
+  interestOnPrincipal(termLength) {
+    return this.principal * Math.pow(1 + this.interestRate / this.compoundsPerYear, this.compoundsPerYear * termLength);
   }
   
-  interestOnFutureValueOfASeries() {
+  interestOnFutureValueOfASeries(termLength) {
     const interestRateByCompounds = this.interestRate / this.compoundsPerYear
     const interestRateOverOneByCompounds = 1 + this.interestRate / this.compoundsPerYear
     
-    return this.monthlyAmount * ((Math.pow(interestRateOverOneByCompounds, (this.compoundsPerYear * this.termLength)) - 1) / interestRateByCompounds) * interestRateOverOneByCompounds
+    return this.monthlyAmount * ((Math.pow(interestRateOverOneByCompounds, (this.compoundsPerYear * termLength)) - 1) / interestRateByCompounds) * interestRateOverOneByCompounds
   }
 
-  calculate() { 
-    return Number((this.interestOnPrincipal() + this.interestOnFutureValueOfASeries()).toFixed(2));
+  calculate(termLength) { 
+    return Number((this.interestOnPrincipal(termLength) + this.interestOnFutureValueOfASeries(termLength)).toFixed(2));
   }
 }
 
