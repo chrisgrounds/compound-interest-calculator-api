@@ -1,5 +1,7 @@
 # compound-interest-calculator-api
 
+![Node.js CI](https://github.com/chrisgrounds/compound-interest-calculator-api/workflows/Node.js%20CI/badge.svg)
+
 A serverless compound interest API on AWS Lambda.
 
 Visit:
