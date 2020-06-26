@@ -160,7 +160,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/compound-interest-calculator-api/dev/1592845476721-2020-06-22T17:04:36.721Z/compound-interest-calculator-api.zip"
+                "S3Key": "serverless/compound-interest-calculator-api/dev/1593168613216-2020-06-26T10:50:13.216Z/compound-interest-calculator-api.zip"
               },
               "FunctionName": "compound-interest-calculator-api-dev-hello",
               "Handler": "handler.api",
@@ -178,14 +178,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionHkcmYouGGc7NEvrltqqYCN3dl0DylB6iqTf94": {
+          "HelloLambdaVersionHR8dvuDgZlJ7HflniJ5e40medLlgMTVWHmbeU6ik7Q": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "kekI7b6ZaHGV8SRb5EA1BNF1xZLCIsH3EjyZjowtlxY="
+              "CodeSha256": "4ia8GlggV9zxO2/IzvRWIdbN8JbIP7vFc1O1IV28Rqs="
             }
           },
           "ApiGatewayRestApi": {
@@ -315,7 +315,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1592845471043": {
+          "ApiGatewayDeployment1593168607801": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -375,7 +375,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionHkcmYouGGc7NEvrltqqYCN3dl0DylB6iqTf94"
+              "Ref": "HelloLambdaVersionHR8dvuDgZlJ7HflniJ5e40medLlgMTVWHmbeU6ik7Q"
             }
           },
           "ServiceEndpoint": {
@@ -513,17 +513,17 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionHkcmYouGGc7NEvrltqqYCN3dl0DylB6iqTf94"
+        "versionLogicalId": "HelloLambdaVersionHR8dvuDgZlJ7HflniJ5e40medLlgMTVWHmbeU6ik7Q"
       }
     },
     "serviceFilename": "serverless.yml",
     "app": "compound-interest-calculator-api",
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/Users/baconc01/compound-interest-calculator-api/.serverless/compound-interest-calculator-api.zip"
+    "artifact": "C:\\Users\\Chris\\Documents\\GitHub\\compound-interest-calculator-api\\.serverless\\compound-interest-calculator-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/compound-interest-calculator-api/dev/1592845476721-2020-06-22T17:04:36.721Z",
+    "artifactDirectoryName": "serverless/compound-interest-calculator-api/dev/1593168613216-2020-06-26T10:50:13.216Z",
     "artifact": "compound-interest-calculator-api.zip"
   }
 }

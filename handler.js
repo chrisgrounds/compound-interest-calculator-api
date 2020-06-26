@@ -12,7 +12,7 @@ module.exports.api = async event => {
 
   const history =
     [...Array(termLength - 1).keys()]
-      .map(i => ({ year: i + 1, value: calculator.calculate(i) }));
+      .map(i => ({ year: i + 1, value: calculator.calculate(i + 1) }));
 
   const value = calculator.calculate(termLength);
 
