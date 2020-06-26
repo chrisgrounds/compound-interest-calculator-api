@@ -7,8 +7,9 @@ module.exports.api = async event => {
   const monthlyAmount = parseInt(event.queryStringParameters.monthlyAmount);
   const interestRate = parseFloat(event.queryStringParameters.interestRate);
   const termLength = parseInt(event.queryStringParameters.termLength);
+  const compoundsPerYear = parseInt(event.queryStringParameters.compoundsPerYear);
   
-  const calculator = new Calculator(principal, monthlyAmount, interestRate, termLength);
+  const calculator = new Calculator(principal, monthlyAmount, interestRate, compoundsPerYear);
 
   const history =
     [...Array(termLength - 1).keys()]
@@ -31,6 +32,7 @@ module.exports.api = async event => {
           monthlyAmount,
           interestRate,
           termLength,
+          compoundsPerYear
         },
       },
       null,

@@ -1,9 +1,9 @@
 class Calculator {
-  constructor(principal, monthlyAmount, interestRate, termLength) {
+  constructor(principal, monthlyAmount, interestRate, compoundsPerYear) {
     this.principal = principal;
     this.monthlyAmount = monthlyAmount;
     this.interestRate = interestRate;
-    this.compoundsPerYear = 12
+    this.compoundsPerYear = compoundsPerYear || 12;
   }
   
   interestOnPrincipal(termLength) {

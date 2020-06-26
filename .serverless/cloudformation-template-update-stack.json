@@ -146,7 +146,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/compound-interest-calculator-api/dev/1593168613216-2020-06-26T10:50:13.216Z/compound-interest-calculator-api.zip"
+          "S3Key": "serverless/compound-interest-calculator-api/dev/1593168930729-2020-06-26T10:55:30.729Z/compound-interest-calculator-api.zip"
         },
         "FunctionName": "compound-interest-calculator-api-dev-hello",
         "Handler": "handler.api",
@@ -164,14 +164,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionHR8dvuDgZlJ7HflniJ5e40medLlgMTVWHmbeU6ik7Q": {
+    "HelloLambdaVersionTrQxI8PPRTxlpX4hzXIE4NS5JoMQyUwGkRhUAsnars": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "4ia8GlggV9zxO2/IzvRWIdbN8JbIP7vFc1O1IV28Rqs="
+        "CodeSha256": "qqrhkEUNZuMRHyaY242M3d/wGmU+kirbIQ3/3bpkl8U="
       }
     },
     "ApiGatewayRestApi": {
@@ -301,7 +301,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1593168607801": {
+    "ApiGatewayDeployment1593168925476": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -361,7 +361,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionHR8dvuDgZlJ7HflniJ5e40medLlgMTVWHmbeU6ik7Q"
+        "Ref": "HelloLambdaVersionTrQxI8PPRTxlpX4hzXIE4NS5JoMQyUwGkRhUAsnars"
       }
     },
     "ServiceEndpoint": {
