@@ -1,6 +1,10 @@
 'use strict';
 
+const md5 = require("md5");
+
 const Calculator = require("./Calculator");
+
+let inMemoryCache = {};
 
 module.exports.api = async event => {
   const principal = parseInt(event.queryStringParameters.principal);
@@ -8,14 +12,36 @@ module.exports.api = async event => {
   const interestRate = parseFloat(event.queryStringParameters.interestRate);
   const termLength = parseInt(event.queryStringParameters.termLength);
   const compoundsPerYear = parseInt(event.queryStringParameters.compoundsPerYear);
+
+  const hashedParams = md5(`${principal}${monthlyAmount}${interestRate}${termLength}${compoundsPerYear}`);
+
+  const cacheHit = inMemoryCache[hashedParams];
+
+  let calculationResult;
+
+  if (cacheHit) {
+    calculationResult = {
+      cache: "hit",
+      value: cacheHit.value,
+      history: cacheHit.history,
+    }
+  } else {
+    const calculator = new Calculator(principal, monthlyAmount, interestRate, compoundsPerYear);
+
+    const history =
+      [...Array(termLength - 1).keys()]
+        .map(i => ({ year: i + 1, value: calculator.calculate(i + 1) }));
   
-  const calculator = new Calculator(principal, monthlyAmount, interestRate, compoundsPerYear);
+    const value = calculator.calculate(termLength);
 
-  const history =
-    [...Array(termLength - 1).keys()]
-      .map(i => ({ year: i + 1, value: calculator.calculate(i + 1) }));
+    inMemoryCache[hashedParams] = { value, history };
 
-  const value = calculator.calculate(termLength);
+    calculationResult = {
+      cache: "miss",
+      value: value,
+      history: history,
+    };
+  }
 
   return {
     statusCode: 200,
@@ -25,8 +51,7 @@ module.exports.api = async event => {
     },
     body: JSON.stringify(
       {
-        value,
-        history,
+        calculationResult,
         input: {
           principal,
           monthlyAmount,
