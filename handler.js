@@ -31,7 +31,7 @@ module.exports.api = async event => {
     const history =
       [...Array(termLength - 1).keys()]
         .map(i => ({ year: i + 1, value: calculator.calculate(i + 1) }));
-  
+
     const value = calculator.calculate(termLength);
 
     inMemoryCache[hashedParams] = { value, history };
@@ -48,6 +48,7 @@ module.exports.api = async event => {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
+      "Cache-Control": "no-cache",
     },
     body: JSON.stringify(
       {
