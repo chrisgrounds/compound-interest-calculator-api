@@ -4,6 +4,7 @@
   "description": "",
   "main": "Calculator.js",
   "scripts": {
+    "start": "sls offline start",
     "test": "jest"
   },
   "author": "",
@@ -11,5 +12,8 @@
   "dependencies": {
     "jest": "^26.0.1",
     "md5": "^2.2.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^6.4.0"
   }
 }

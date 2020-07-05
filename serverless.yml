@@ -1,6 +1,9 @@
 service: compound-interest-calculator-api
 app: compound-interest-calculator-api
 
+plugins:
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs12.x
