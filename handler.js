@@ -51,7 +51,7 @@ module.exports.api = async event => {
     },
     body: JSON.stringify(
       {
-        calculationResult,
+        ...calculationResult,
         input: {
           principal,
           monthlyAmount,
