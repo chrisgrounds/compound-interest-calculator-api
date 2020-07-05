@@ -5,11 +5,11 @@ class Calculator {
     this.interestRate = interestRate;
     this.compoundsPerYear = compoundsPerYear || 12;
   }
-  
+
   interestOnPrincipal(termLength) {
     return this.principal * Math.pow(1 + this.interestRate / this.compoundsPerYear, this.compoundsPerYear * termLength);
   }
-  
+
   interestOnFutureValueOfASeries(termLength) {
     const paymentPeriodsPerYear = 12;
     const compoundsPerYearEqualsNumberOfPaymentsPerYear = this.compoundsPerYear === paymentPeriodsPerYear;
@@ -29,7 +29,7 @@ class Calculator {
     return this.monthlyAmount * (((1 + rate) ** totalNumberOfPayments - 1) / rate);
   }
 
-  calculate(termLength) { 
+  calculate(termLength) {
     return Number((this.interestOnPrincipal(termLength) + this.interestOnFutureValueOfASeries(termLength)).toFixed(2));
   }
 }
