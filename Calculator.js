@@ -11,10 +11,20 @@ class Calculator {
   }
   
   interestOnFutureValueOfASeries(termLength) {
-    const interestRateByCompounds = this.interestRate / this.compoundsPerYear
-    const interestRateOverOneByCompounds = 1 + this.interestRate / this.compoundsPerYear
-    
-    return this.monthlyAmount * ((Math.pow(interestRateOverOneByCompounds, (this.compoundsPerYear * termLength)) - 1) / interestRateByCompounds) * interestRateOverOneByCompounds
+    const paymentPeriodsPerYear = 12;
+    const compoundsPerYearEqualsNumberOfPaymentsPerYear = this.compoundsPerYear === paymentPeriodsPerYear;
+
+    if (compoundsPerYearEqualsNumberOfPaymentsPerYear || termLength === 1) {
+      const interestRatePerCompound = this.interestRate / this.compoundsPerYear;
+      const interestRatePerCompoundPlusOne = 1 + this.interestRate / this.compoundsPerYear;
+
+      return this.monthlyAmount * ((Math.pow(interestRatePerCompoundPlusOne, (this.compoundsPerYear * termLength)) - 1) / interestRatePerCompound) * interestRatePerCompoundPlusOne;
+    }
+
+    const rate = ((1 + this.interestRate / this.compoundsPerYear) ** (this.compoundsPerYear / paymentPeriodsPerYear)) - 1;
+    const totalNumberOfPayments = paymentPeriodsPerYear * termLength;
+
+    return this.monthlyAmount * (((1 + rate) ** totalNumberOfPayments - 1) / rate);
   }
 
   calculate(termLength) { 
