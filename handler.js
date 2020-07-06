@@ -4,7 +4,7 @@ const md5 = require("md5");
 
 const Calculator = require("./Calculator");
 
-let inMemoryCache = {};
+const inMemoryCache = {};
 
 module.exports.api = async event => {
   try {
@@ -49,7 +49,7 @@ module.exports.api = async event => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
-        "Cache-Control": "no-cache",
+        "Cache-Control": "Cache-Control: public, max-age=90000",
       },
       body: JSON.stringify(
         {
@@ -72,7 +72,7 @@ module.exports.api = async event => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
-        "Cache-Control": "no-cache",
+        "Cache-Control": "Cache-Control: public, max-age=90000",
       },
       body: JSON.stringify({
         msg: `${error}`
