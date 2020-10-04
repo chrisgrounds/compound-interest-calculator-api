@@ -1,0 +1,33 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Resources": {
+    "Lambda": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+          "Handler": "handler.api",
+          "Role": {
+              "Fn::GetAtt": [
+                  "LambdaExecutionRole",
+                  "Arn"
+              ]
+          },
+          "Code": {
+              "S3Bucket": "cic-lambda",
+              "S3Key": "ciclambda.zip"
+          },
+          "Runtime": "nodejs12.x",
+          "Timeout": 25,
+          "TracingConfig": {
+              "Mode": "Active"
+          }
+      }
+    },
+    "S3Bucket" : {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketName": "cic-lambda"
+      }  
+    }
+  }
+}
