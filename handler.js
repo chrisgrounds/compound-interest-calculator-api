@@ -4,6 +4,12 @@ const md5 = require("md5");
 
 const Calculator = require("./Calculator");
 
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Credentials": true,
+  "Cache-Control": "no-cache",
+};
+
 let inMemoryCache = {};
 
 module.exports.api = async event => {
@@ -46,11 +52,7 @@ module.exports.api = async event => {
 
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-        "Cache-Control": "no-cache",
-      },
+      headers,
       body: JSON.stringify(
         {
           ...calculationResult,
@@ -69,11 +71,7 @@ module.exports.api = async event => {
   } catch (error) {
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-        "Cache-Control": "no-cache",
-      },
+      headers,
       body: JSON.stringify({
         msg: `${error}`
       }),
